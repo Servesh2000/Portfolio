@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servesh Seth - Portfolio</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #1a1a2e, #16213e);
+            color: white;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #4caf50, #1a1a2e);
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+            position: relative;
+        }
+        header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            cursor: pointer;
+            animation: slideUp 1.5s ease-in-out;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            animation: slideUp 1.5s ease-in-out;
+        }
+        .scroll-arrow {
+            margin-top: 2rem;
+            font-size: 2rem;
+            color: white;
+            animation: bounce 1.5s infinite;
+            cursor: pointer;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            animation: fadeIn 2s ease-in-out;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #4caf50;
+            left: 50%;
+            bottom: -5px;
+            transition: all 0.3s;
+        }
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        section {
+            padding: 2rem 1rem;
+            max-width: 900px;
+            margin: 1.5rem auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-in-out;
+        }
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        section h2 {
+            color: #4caf50;
+            border-bottom: 3px solid #4caf50;
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding-bottom: 5px;
+        }
+        .skills span {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.5rem;
+            font-weight: bold;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .resume-button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            margin-top: 2rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .resume-button:hover {
+            background-color: #45a049;
+        }
+        .resume-message {
+            display: none;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: messageAnimation 3s ease-in-out forwards;
+        }
+        .resume-content {
+            display: none;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .resume-content a {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .resume-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+        }
+        .contact-form label {
+            font-weight: bold;
+            color: #4caf50;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .contact-form button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #45a049;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes messageAnimation {
+            0% { opacity: 0; }
+            50% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-50px); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            nav a {
+                margin: 0.5rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            header img {
+                width: 100px;
+                height: 100px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+            }
+            section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://assets.onecompiler.app/436amezvc/436akwrkr/myself.jpg" alt="Servesh Seth">
+        <h1>Servesh Seth</h1>
+        <p>MCA Student | Aspiring Web Developer | Java Specialist</p>
+        <div class="scroll-arrow">⬇</div>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#resume" class="resume-button">Resume</a>
+    </nav>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                Welcome! I'm Servesh Seth, a passionate coder currently pursuing my MCA from PSIT. 
+                With a solid foundation in Java and C, I'm now exploring the world of web development through internships 
+                to craft beautiful, functional applications.
+            </p>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <span>Java</span>
+                <span>C Programming</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>React (Learning)</span>
+            </div>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>
+                I'm building projects that demonstrate my ability to create responsive, dynamic web applications.
+                Stay tuned for detailed showcases of my work!
+            </p>
+        </section>
+        <section id="resume">
+            <h2>Resume</h2>
+            <button class="view-resume-btn">Click to View My Resume</button>
+            <div class="resume-message"></div>
+            <div class="resume-content">
+                <p>Click below to view my resume: </p>
+                <a href="https://assets.onecompiler.app/436amezvc/436ba89mp/SERVESH%20RESUME-1.pdf" target="_blank">Download Resume</a>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <form class="contact-form" action="your-backend-endpoint" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Servesh Seth. All rights reserved.</p>
+        <p>Designed with ❤️</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Scroll to the next section
+            document.querySelector(".scroll-arrow").addEventListener("click", () => {
+                document.querySelector("#about").scrollIntoView({ behavior: "smooth" });
+            });
+
+            // Show animation and reveal resume
+            const resumeButton = document.querySelector(".view-resume-btn");
+            const resumeMessage = document.querySelector(".resume-message");
+            const resumeContent = document.querySelector(".resume-content");
+
+            resumeButton.addEventListener("click", () => {
+                // Show the message animation
+                resumeMessage.style.display = "block";
+                
+                // Show resume after the animation
+                setTimeout(() => {
+                    resumeContent.style.display = "block";
+                }, 3000); // After 3 seconds (animation duration)
+
+                // Hide the button after clicking
+                resumeButton.style.display = "none";
+            });
+
+            // Animate sections on scroll
+            const sections = document.querySelectorAll("section");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            sections.forEach((section) => observer.observe(section));
+        });
+    </script>
+</body>
+</html>
