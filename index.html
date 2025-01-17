@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servesh Seth - Portfolio</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #1a1a2e, #16213e);
+            color: white;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #4caf50, #1a1a2e);
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+            position: relative;
+        }
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        header h1 {
+            font-size: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #4caf50;
+            left: 50%;
+            bottom: -5px;
+            transition: all 0.3s;
+        }
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        section {
+            padding: 3rem 1rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        section h2 {
+            color: #4caf50;
+            border-bottom: 3px solid #4caf50;
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding-bottom: 5px;
+        }
+        .skills span {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.5rem;
+            font-weight: bold;
+            animation: bounceIn 1s ease-in-out;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: #16213e;
+            color: white;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes bounceIn {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://assets.onecompiler.app/436amezvc/436akwrkr/myself.jpg" alt="Servesh Seth">
+        <h1>Servesh Seth</h1>
+        <p>MCA Student | Aspiring Web Developer | Java Specialist</p>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                Welcome! I'm Servesh Seth, a passionate coder currently pursuing my MCA from PSIT. 
+                With a solid foundation in Java and C, I'm now exploring the world of web development through internships 
+                to craft beautiful, functional applications.
+            </p>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <span>Java</span>
+                <span>C Programming</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>React (Learning)</span>
+            </div>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>
+                I'm building projects that demonstrate my ability to create responsive, dynamic web applications.
+                Stay tuned for detailed showcases of my work!
+            </p>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:SERVESHSETH2000@gmail.com">SERVESHSETH2000@gmail.com</a></p>
+            <p>Phone: <a href="tel:+919140032705">+91 91400 32705</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/your-profile" target="_blank">linkedin.com/in/your-profile</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Servesh Seth. All rights reserved.</p>
+        <p>Designed with ❤️</p>
+    </footer>
+</body>
+</html>
